@@ -1,0 +1,46 @@
+﻿
+@using BokningsSystem_SlutUppgift.Models;
+@model List<Giraffe>
+
+@{ 
+    ViewData["Title"] = "List of Giraffes";
+}
+<div class="text-center">
+    <h1 class="display-4">Our friendly giraffes</h1>
+    </div>
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Add a new giraffe</a>
+    </p>
+
+    <div style="background-color: whitesmoke; border-radius: 1em; padding: 20px;">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Picture:</th>
+                    <th>Name:</th>
+                    <th>Height:</th>
+                    <th>Age:</th>
+                    <th>Origin:</th>
+                    <th>Price:</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var giraffe in Model)
+                {
+                    <tr>
+                        <td><img src="@giraffe.PicId" style="width:200px;height:200px;background:content-box" /></td>
+                        <td style="margin-left:20px;">@giraffe.Name</td>
+                        <td>@giraffe.Height</td>
+                        <td>@giraffe.Age</td>
+                        <td>@giraffe.Origin</td>
+                        <td>@giraffe.Price$/Hour</td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@giraffe.Id">Edit</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@giraffe.Id">Remove</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>

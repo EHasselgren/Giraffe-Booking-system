@@ -1,0 +1,40 @@
+﻿@model List<Booking>
+
+@{ 
+    ViewData["Title"] = "All bookings";
+}
+
+<h1>All Giraffe Bookings</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Booker
+            </th>
+            <th>
+                Room
+            </th>
+            <th>
+                From
+            </th>
+            <th>
+                To
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.Booker</td>
+                <td>@booking.GiraffeName</td>
+                <td>@booking.From</td>
+                <td>@booking.To</td>
+                <td>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

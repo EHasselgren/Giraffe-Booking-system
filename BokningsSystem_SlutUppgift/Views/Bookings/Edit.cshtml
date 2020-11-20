@@ -1,0 +1,51 @@
+﻿@model BokningsSystem_SlutUppgift.Models.ViewModels.EditBookingViewModel;
+<div class="text-center">
+    <h1 class="display-4" style="position: relative; right: 400px;">Edit booking</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit" method="post">
+                <div>
+                    <input hidden asp-for="Booking.Id" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Booker:</label>
+                    <input class="form-control" asp-for="Booking.Booker" />
+                    <span asp-validation-for="Booking.Booker" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Email:</label>
+                    <input class="form-control" asp-for="Booking.BookerEmail" />
+                    <span asp-validation-for="Booking.BookerEmail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Giraffe:</label>
+                    <select class="form-control" asp-for="Booking.GiraffeId"
+                            asp-items="@(new SelectList(Model.Giraffes, "Id", "Name"))">
+                        <option>Select Giraffe</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">From:</label>
+                    <input class="form-control" asp-for="Booking.From" />
+                    <span asp-validation-for="Booking.From" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">To:</label>
+                    //<input class="form-control" asp-for="Booking.To" />
+                    <span asp-validation-for="Booking.To" class="text-danger"></span>
+                </div>
+                <div>
+                    <input class="btn btn-primary" type="submit" value="Edit" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to list</a>
+    </div>
+
+    @section Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml"); }
+    }
